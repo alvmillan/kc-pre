@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>KC_EJ12</title>
+</head>
+
+<body>
+    <!--La siguiente código presenta una opción de solución mínima viable usando las entradas/salidas de JS por cliente: prompt y alert. Sin embargo, el mismo resutado puede ser alcanzado usando controles input, eventos y DOM, o JQuery, o un enfoque funcional. Utiliza con el que prefieras practicar. Si tienes dudas consulta a tu instructor de JS o a tu coach. 
+         -->
+    <script type="text/javascript">
+        function esVocal(letra) {
+            var x = letra.toUpperCase();
+            var result;
+
+            result = x == "A" || x == "E" || x == "I" || x == "O" || x == "U";
+            return result;
+        };
+
+        function template(letra) {
+            var vocal = "es una vocal";
+            var noVocal = "no es una vocal";
+
+            return `La letra ${letra} ${esVocal(letra)? vocal : noVocal}`
+        }
+
+        var letra = prompt("Introduce una letra");
+
+        alert(template(letra));
+    </script>
+</body>
+
+</html>

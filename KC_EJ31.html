@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>KC_EJ30</title>
+</head>
+
+<body>
+    <!--La siguiente código presenta una opción de solución mínima viable usando las entradas/salidas de JS por cliente: prompt y alert. Sin embargo, el mismo resutado puede ser alcanzado usando controles input, eventos y DOM, o JQuery, o un enfoque funcional. Utiliza con el que prefieras practicar. Si tienes dudas consulta a tu instructor de JS o a tu coach. 
+         -->
+    <script type="text/javascript">
+        class Alumno {
+            constructor(numero_matricula, nombre, apellido, correo_electronico, status_inscrito) {
+                this.numero_matricula = numero_matricula;
+                this.nombre = nombre;
+                this.apellido = apellido;
+                this.correo_electronico = correo_electronico;
+                this.status_inscrito = status_inscrito;
+            }
+        };
+
+        class AlumnoRemoto extends Alumno {
+            constructor(numero_matricula, nombre, apellido, correo_electronico, status_inscrito, skype, uso_horario) {
+                super(numero_matricula, nombre, apellido, correo_electronico, status_inscrito);
+                this.skype = skype;
+                this.uso_horario = uso_horario;
+            }
+        }
+
+        class AlumnoPresencial extends Alumno {
+            constructor(numero_matricula, nombre, apellido, correo_electronico, status_inscrito, numero_asiento) {
+                super(numero_matricula, nombre, apellido, correo_electronico, status_inscrito);
+                this.numero_asiento = numero_asiento;
+            }
+        }
+
+        class Modulo {
+            constructor(fecha_inicio, fecha_fin) {
+                this.listado_alumnos = new Array();
+                this.fecha_inicio = fecha_inicio;
+                this.fecha_fin = fecha_fin;
+            }
+
+            agregarAlumno(alumno) {
+                this.listado_alumnos.push(alumno);
+            }
+
+            buscarAlumno(alumno) {
+                return this.listado_alumnos.find(x => x == alumno);
+            }
+
+            buscarAlumnoPorMatricula(mat) {
+                return this.listado_alumnos.find(x => x.numero_matricula === mat);
+            }
+
+            darAlumnosInscritos() {
+                return this.listado_alumnos.filter(alumno => alumno.status_inscrito == true);
+            }
+        };
+
+        function init() {
+            a = new Alumno(1, 'Jose', 'Durruti', 'jose@durruti.com', false);
+            b = new Alumno(2, 'Miguel', 'Hernandez', 'miguel@hernandez.com', false);
+            c = new Alumno(3, 'Largo', 'Caballero', 'largo@caballero.com', false);
+
+            m = new Modulo('Noviembre 2018', 'Septiembre 2019');
+
+            m.agregarAlumno(a);
+            m.agregarAlumno(b);
+            m.agregarAlumno(c);
+
+            alert(JSON.stringify(m.listado_alumnos));
+            var mat = parseInt(prompt('Buscar alumno por N de matricula'));
+            alert(JSON.stringify(m.buscarAlumnoPorMatricula(mat)));
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

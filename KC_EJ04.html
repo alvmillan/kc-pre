@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>KC_EJ01</title>
+</head>
+
+<body>
+    <!--La siguiente código presenta una opción de solución mínima viable usando las entradas/salidas de JS por cliente: prompt y alert. Sin embargo, el mismo resutado puede ser alcanzado usando controles input, eventos y DOM, o JQuery, o un enfoque funcional. Utiliza con el que prefieras practicar. Si tienes dudas consulta a tu instructor de JS o a tu coach. 
+    -->
+    <script type="text/javascript">
+        var notas = [];
+
+        function media(notas) {
+            var total = 0;
+            notas.forEach(e => {
+                total = total + e;
+            });
+            return total / notas.length;
+        }
+
+        notas.push(parseInt(prompt("Introduce nota 1")));
+        notas.push(parseInt(prompt("Introduce nota 2")));
+        notas.push(parseInt(prompt("Introduce nota 3")));
+
+        alert(`Media: ${media(notas)}`);
+    </script>
+</body>

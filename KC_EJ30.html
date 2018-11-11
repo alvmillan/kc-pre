@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>KC_EJ30</title>
+</head>
+
+<body>
+    <!--La siguiente código presenta una opción de solución mínima viable usando las entradas/salidas de JS por cliente: prompt y alert. Sin embargo, el mismo resutado puede ser alcanzado usando controles input, eventos y DOM, o JQuery, o un enfoque funcional. Utiliza con el que prefieras practicar. Si tienes dudas consulta a tu instructor de JS o a tu coach. 
+         -->
+    <script type="text/javascript">
+        var refrescos = [{
+            _id: 1,
+            nombre: "Fanta",
+            precio: 100
+        }, {
+            _id: 2,
+            nombre: "Pepsi",
+            precio: 100
+        }, {
+            _id: 3,
+            nombre: "7Up",
+            precio: 100
+        }];
+
+        var alertas = [{
+            cod: "REFRESCO_NO_EXISTE",
+            msg: "El refresco seleccionado no existe"
+        }, {
+            cod: "IMPORTE_NO_VALIDO",
+            msg: "Importe aportado invalido"
+        }];
+
+        var dineroPagado = 0;
+
+
+        function getRefresco(id) {
+            var refresco;
+            refresco = refrescos.find(x => x._id == id);
+            if (refresco) {
+                return refresco;
+            } else {
+                alert(alertas.find(x => x.cod === "REFRESCO_NO_EXISTE").msg);
+                pantallaInicio();
+            }
+        }
+
+        function validarImporte(importe) {
+            if (importe != 1 && importe != 10 && importe != 20 && importe != 50) {
+                alert(alertas.find(x => x.cod === "IMPORTE_NO_VALIDO").msg);
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function catalogo() {
+            var output = "Seleccione su bebida \n";
+            refrescos.forEach(refresco => {
+                output = `${output} \n ${refresco._id} : ${refresco.nombre} €${refresco.precio / 100}`;
+            });
+            return output;
+        }
+
+        function darBebida(cambio) {
+            alert(`Expendiendo bebida. \n \n Cambio de ${cambio} cts.`);
+        }
+
+        function dialogo(refresco) {
+            var msg = ` INTRODUCE MONEDA (solo aceptamos de 1 € o 50, 20 y 10 cts): \n ${refresco.nombre} : € ${refresco.precio / 100} \n Total introducido: ${dineroPagado} \n Total restante: ${refresco.precio - dineroPagado}`;
+            while (dineroPagado < refresco.precio) {
+                var importe = parseInt(prompt(msg));
+                if (validarImporte(importe)) {
+                    importe == 1 ? importe = 100 : importe;
+                    dineroPagado = dineroPagado + importe;
+                }
+            }
+            darBebida(dineroPagado - refresco.precio);
+        }
+
+        function pantallaInicio() {
+            var refrescoSeleccionado = prompt(catalogo());
+            dialogo(getRefresco(refrescoSeleccionado));
+        }
+
+        pantallaInicio();
+    </script>
+</body>
+
+</html>

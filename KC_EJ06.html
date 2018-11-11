@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>KC_EJ05</title>
+</head>
+
+<body>
+    <!--La siguiente código presenta una opción de solución mínima viable usando las entradas/salidas de JS por cliente: prompt y alert. Sin embargo, el mismo resutado puede ser alcanzado usando controles input, eventos y DOM, o JQuery, o un enfoque funcional. Utiliza con el que prefieras practicar. Si tienes dudas consulta a tu instructor de JS o a tu coach. 
+         -->
+    <script type="text/javascript">
+        var calc = {
+            mayorQue: (n, m) => n > m ? true : false,
+            menorQue: (n, m) => n < m ? true : false,
+            iguales: (n, m) => n == m ? true : false,
+            distintos: (n, m) => n != m ? true : false
+        };
+
+        var operaciones = [
+            ['>', calc.mayorQue],
+            ['<', calc.menorQue],
+            [' es igual a ', calc.iguales],
+            [' es distinto a ', calc.distintos]
+        ];
+
+        function template(n, m) {
+            var output = "";
+
+            operaciones.forEach(element => {
+                output = `${output} \n ${n}${element[0]}${m}= ${element[1](n,m)} `
+            });
+
+            return output;
+        }
+
+        var n = parseInt(prompt("Introduce un número"));
+        var m = parseInt(prompt("Introduce un segundo número"));
+
+        alert(template(n, m));
+    </script>
+</body>
+
+</html>
